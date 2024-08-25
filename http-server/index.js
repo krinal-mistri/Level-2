@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const minimist = require("minimist");
 
-var port = 3000;
+var port = 5000;
 const myArgs = minimist(process.argv.slice(2));
 if (myArgs.port != undefined) port = myArgs.port;
 
@@ -30,18 +30,6 @@ fs.readFile("project.html", (err, project) => {
     throw err;
   }
   projectContent = project;
-});
-fs.readFile("script.js", (err, script) => {
-  if (err) {
-    throw err;
-  }
-  scriptContent = script;
-});
-fs.readFile("style.css", (err, style) => {
-  if (err) {
-    throw err;
-  }
-  styleContent = style;
 });
 http
   .createServer((request, response) => {
